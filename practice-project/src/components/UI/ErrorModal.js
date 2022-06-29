@@ -28,8 +28,16 @@ const ErrorModal = (props) => {
   return (
     <React.Fragment>
       {ReactDOM.createPortal(
-        <Backdrop onClick={props.onClose} />,
+        <Backdrop onClose={props.onClose} />,
         document.getElementById("backdrop-root")
+      )}
+      {ReactDOM.createPortal(
+        <ModalOverlay
+          title={props.title}
+          message={props.message}
+          onClose={props.onClose}
+        />,
+        document.getElementById("overlay-root")
       )}
     </React.Fragment>
   );
